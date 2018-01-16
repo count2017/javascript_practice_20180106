@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>
+			全局变量会绑定到window上，不同的JavaScript文件如果
+			使用了相同的全局变量，或者定义了相同名字的顶层函数，
+			都会造成命名冲突，并且很难被发现<br />
+			<strong>减少冲突的一个方法是把自己的所有变量和函数
+				全部绑定到一个全局变量中。例如：</strong>
+		</p>
+		<p>
+			把自己的代码全部放入唯一的名字空间MYAPP中，会大大减少全局变量冲突的可能。
+			许多著名的JavaScript库都是这么干的：jQuery，YUI，underscore等等。
+		</p>
+		<p>
+			【局部作用域】
+			由于JavaScript的变量作用域实际上是函数内部，我们在for循环等
+			语句块中是无法定义具有局部作用域的变量的：<br />
+			<strong>为了解决块级作用域，ES6引入了新的关键字let，
+			用let替代var可以申明一个块级作用域的变量</strong>
+		</p>
+		<p>
+			ES6标准引入了新的关键字const来定义常量，const与let都具有块级作用域：
+		</p>
+		<script type="text/javascript">
+			'use strict';
+			document.write('----------------------------'+"<br />");
+			//减少冲突的一个方法是把自己的所有变量和函数全部绑定到一个全局变量中
+			var MY_VAR = {};//an object with no properties
+			MY_VAR.name = 'Bob';//set a property in the object
+			MY_VAR.age = 18;
+			
+			document.write(MY_VAR.name +"<br />");
+			document.write(MY_VAR.age +"<br />");
+			document.write('----------------------------'+"<br />");
+			MY_VAR.foo = function(){
+				document.write('jjjjjjjjjjjj'+"<br />");
+			}
+			MY_VAR.foo();
+			window.MY_VAR.foo();
+			
+			document.write('----------------------------'+"<br />");
+			var x = 10;
+			document.write(x+"<br />");//10
+			
+			document.write('----------------------------'+"<br />");
+			function f1(){
+				for(var i=0;i<1;i++){
+					document.write('--'+'<br />');
+				}
+				document.write(i+'<br />');//仍然可以使用变量i
+			}
+//			document.write(i);//无法使用i 
+			f1();
+			document.write('----------------------------'+"<br />");
+			
+			
+			/*function f2(){
+				//ES6引入了新的关键字let， 用let替代var可以申明一个块级作用域的变量
+				for(let i=0;i<1;i++){
+					document.write('--'+'<br />');
+				}
+//				document.write(i+'<br />');//无法使用使用变量i
+			}
+			f2();*/
+			document.write('----------------------------'+"<br />");
+			//ES6标准引入了新的关键字const来定义常量，const与let都具有块级作用域：
+			/*const PI = 3.14;
+			document.write(PI);*/
+			
+		</script>
+	</body>
+</html>

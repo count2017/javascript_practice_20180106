@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>
+			ECMA决定，在strict模式下让函数的this指向undefined，因此，
+			在strict模式下，你会得到一个错误：<br />
+			//"Uncaught TypeError: Cannot read property 'birth' of undefined"
+		</p>
+		
+		<script type="text/javascript">
+			'use strict';
+			function getAge(){
+				var y = new Date().getFullYear();
+				return y - this.birth;
+			}
+			var xiaoming = {
+				name:'小明',
+				birth:1999,
+				age: getAge
+			};
+			document.write(xiaoming.age()+'<br />');// 28, 正常结果
+			
+			var fn = xiaoming.age;
+			fn();//"Uncaught TypeError: Cannot read property 'birth' of undefined"
+		</script>
+	</body>
+</html>

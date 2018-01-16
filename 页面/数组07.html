@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>splice()方法是修改Array的“万能方法”，
+			它可以从指定的索引开始删除若干元素，然后再从该位置添加若干元素：
+		</p>
+		<script type="text/javascript">
+			var arr = ['Microsoft', 'Apple', 'Yahoo', 'AOL', 'Excite', 'Oracle'];
+			document.write("arr的值："+arr + "<br />");
+			// 从索引2开始删除3个元素,然后再添加两个元素:
+			var c_a = arr.splice(2,3,'A',"B");
+			document.write("arr修改后的值："+arr + "<br />");
+			document.write("c_a的值："+c_a + "<br />");
+			// 只删除,不添加:
+			arr.splice(2,2);
+			document.write("arr只删除后的值："+arr + "<br />");
+			// 只添加,不删除:
+			var kk = arr.splice(2,0,"LA","HEAT");
+			document.write(kk + "<br />");// 返回[],因为没有删除任何元素
+			document.write("arr只添加后的值："+arr + "<br />");//从下标2处开始添加
+		</script>
+	</body>
+</html>

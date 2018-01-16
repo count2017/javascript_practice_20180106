@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>concat()方法把当前的Array和另一个Array连接起来，并返回一个新的Array：</p>
+		
+		<p>
+			请注意，concat()方法并没有修改当前Array，而是返回了一个新的Array。
+			<br/>
+			<strong>实际上，concat()方法可以接收任意个元素和Array，并且自动把Array拆开，
+			然后全部添加到新的Array里：
+			</strong>
+		</p>
+		
+		<script type="text/javascript">
+			var arr = ['A', 'B', 'C'];
+			var added = arr.concat(["1",2,'3']);//concat()方法并没有修改当前Array，
+												//而是返回了一个新的Array。
+			document.write('------------------'+"<br />");
+			document.write("added的值："+added+"<br />");
+			document.write('------------------'+"<br />");
+			document.write("arr的值："+arr+"<br />");
+			document.write('------------------'+"<br />");
+			//concat()方法可以接收任意个元素和Array，并且自动把Array拆开，
+			//然后全部添加到新的Array里
+			var a_ = arr.concat(1,2,['a','b','c'],3,['d']);
+			document.write("a_的值："+a_+"<br />");
+			document.write('------------------'+"<br />");
+			
+		</script>
+	</body>
+</html>

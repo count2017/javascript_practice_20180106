@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p id="demo"></p>
+		
+		<script type="text/javascript">
+			var arr = new Array();
+			arr[0] = "你说";
+			arr[1] = "世界";
+			for(var i=0;i<arr.length;i++){
+				document.write(arr[i]+"<br/>");
+			}
+			document.write("--------------------"+"<br />");
+			
+			var brr = new Array("ab","ce","ef");
+			for(var i=0;i<brr.length;i++){
+				document.write(brr[i]+"<br/>");
+			}
+			document.write("--------------------"+"<br />");
+			
+			var crr = [1,55,6,6,,];
+			for(var i=0;i<crr.length;i++){
+				document.write(crr[i]+"<br/>");
+			}
+		</script>
+	</body>
+</html>

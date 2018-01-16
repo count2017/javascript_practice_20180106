@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>
+			如果没有return语句，函数执行完毕后也会返回结果，只是结果为undefined。
+		</p>
+		<script type="text/javascript">
+		document.write('---------------------------------'+"<br />");
+			var x = function(a){
+				document.write(a+"<br />");
+				return;
+			}
+			document.write(x+"<br />");//打印出整个函数
+			document.write('---------------------------------'+"<br />");
+			
+			var _x = x(1);//函数返回值为undefined
+			document.write("匿名函数x执行后的返回值为："+_x+"<br />");
+			document.write('---------------------------------'+"<br />");
+			
+			var f = function(a){
+				return a;
+			}
+			//由于JavaScript允许传入任意个参数而不影响调用，
+			//因此传入的参数比定义的参数多也没有问题，虽然函数内部并不需要这些参数
+			var r1 = f(2,'',"S",null);
+			document.write("传入多个参数后的返回值为："+r1+"<br />");
+			
+			var r3 = f();//返回undefined
+			document.write("不传入参数的返回值为"+r3+"<br />");
+			document.write('---------------------------------'+"<br />");
+			
+			
+			var k = function(v){
+				if(v < 10){
+					return v;
+				}else{
+					return -v;
+				}
+			}
+			var r2 = k();//返回NaN
+			document.write("不传入参数的返回值为："+r2+"<br />");
+			document.write('---------------------------------'+"<br />");
+			
+			
+			
+			//要避免收到undefined，可以对参数进行检查：
+			function abs(x){
+				if(typeof x != 'number')
+				 	throw 'Not a number!';
+				 if(x>0){
+				 	return x;
+				 }else{
+				 	return -x;
+				 }
+			}
+			var a1 = abs("S");//抛出异常‘Not a number!’
+			document.write('---------------------------------'+"<br />");
+		</script>
+	</body>
+</html>

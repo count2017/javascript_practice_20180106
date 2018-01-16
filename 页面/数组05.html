@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>
+			如果要往Array的头部添加若干元素，使用unshift()方法，
+			shift()方法则把Array的第一个元素删掉：
+		</p>
+		
+		<script type="text/javascript">
+			var arr = [1,2];
+			var len = arr.unshift('A',"B");//往数组头部添加元素,并返回新数组的长度
+			document.write(len+"<br />");
+			document.write("-------------"+"<br />");
+			for(var i=0;i<arr.length;i++){
+				document.write(arr[i]+"<br />");
+			}	
+			document.write("-------------"+"<br />");
+			var first = arr.shift();//shift()方法则把Array的第一个元素删掉：,并返回删掉的第一个元素
+			document.write(first+"<br />");
+			document.write("-------------"+"<br />");
+			for(var i=0;i<arr.length;i++){
+				document.write(arr[i]+"<br />");
+			}
+			document.write("-------------"+"<br />");
+			arr.shift();arr.shift();arr.shift();arr.shift();
+			document.write(arr.shift());//连续shift()后的结果——undefined
+		</script>
+	</body>
+</html>

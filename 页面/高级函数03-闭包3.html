@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>
+			<strong>闭包是指有权访问另一个函数作用域中的变量的函数</strong>
+		</p>
+		
+		<p>
+			在面向对象的程序设计语言里，比如Java和C++，要在对象内部封装一个私有变量
+			可以用private修饰一个成员变量。<br />
+			在没有class机制，只有函数的语言里，借助闭包，同样可以封装一个私有变量。
+		</p>
+		
+		<script type="text/javascript">
+			'use strict';
+			function createCounter(ini){
+				var x = ini || 0;
+				return {
+					inc : function(){
+						x += 1;
+						return x;
+					}
+				}
+			}
+			var c1 = createCounter();
+			document.write(c1.inc()+"<br />");
+			document.write(c1.inc()+"<br />");
+			document.write(c1.inc()+"<br />");
+			
+			document.write('------------------------------'+"<br />");
+			var c2 = createCounter(10);
+			document.write(c2.inc()+"<br />");
+			document.write(c2.inc()+"<br />");
+			document.write(c2.inc()+"<br />");
+		</script>
+		
+	</body>
+</html>

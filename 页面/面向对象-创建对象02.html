@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>
+			构造函数
+			除了直接用{ ... }创建一个对象外，JavaScript还可以用一种
+			构造函数的方法来创建对象。它的用法是，先定义一个构造函数：
+		</p>
+		
+		<p>
+			注意，如果不写new，这就是一个普通函数，它返回undefined。
+			但是，如果写了new，它就变成了一个构造函数，它绑定的
+			this指向新创建的对象，并默认返回this，也就是说，
+			不需要在最后写return this;。
+		</p>
+		
+		<p>
+			新创建的xiaoming的原型链是：<br />
+
+			xiaoming ----> Student.prototype ----> Object.prototype ----> null
+		</p>
+		
+		<p>
+			也就是说，xiaoming的原型指向函数Student的原型。如果你又创建了
+			xiaohong、xiaojun，那么这些对象的原型与xiaoming是一样的：<br/>
+
+			xiaoming ↘<br />
+			xiaohong -→ Student.prototype ----> Object.prototype ----> null<br />
+			xiaojun  ↗
+		</p>
+		<p>
+			用new Student()创建的对象还从原型上获得了一个constructor属性，
+			它指向函数Student本身：
+		</p>
+		
+		<p>
+			要让创建的对象共享一个hello函数，根据对象的属性查找原则，
+			我们只要把hello函数移动到xiaoming、xiaohong这些对象共同的
+			原型上就可以了，也就是Student.prototype：
+		</p>
+		
+		<script type="text/javascript">
+			'use strict';
+			document.write('-----------------------------'+'<br />');
+			function Student(name){
+				this.name = name;
+				this.hello = function(){
+					document.write('Hello '+name+"!"+'<br />');
+				}
+			}
+			
+			//这确实是一个普通函数，但是在JavaScript中，可以用
+			//关键字new来调用这个函数，并返回一个对象：
+			var xiaoming = new Student('小明');
+			xiaoming.hello();//Hello 小明!
+		document.write('-----------------------------'+'<br />');
+			//true
+			var flag1 = xiaoming.constructor === Student.prototype.constructor;
+			document.write(flag1+"<br />");
+		document.write('-----------------------------'+'<br />');
+		
+			//true
+			var flag2 = Object.getPrototypeOf(xiaoming) === Student.prototype;
+			document.write(flag2+"<br />");
+		document.write('-----------------------------'+'<br />');
+			
+			//true
+			var flag3 = xiaoming instanceof Student;
+			document.write(flag3+"<br />");
+		document.write('-----------------------------'+'<br />');
+		
+			var xiaohong = new Student('小红');
+			var flag4 = xiaoming.hello() === xiaohong.hello();//true
+			document.write(flag4+"<br />");
+		document.write('-----------------------------'+'<br />');
+			
+			//此时，xiaoming和xiaohong各自的hello是一个函数，
+			//但它们是两个不同的函数，虽然函数名称和代码都是相同的！
+			var flag5 = xiaoming.hello === xiaohong.hello;//!!!false
+			document.write(flag5+"<br />");
+		document.write('-----------------------------'+'<br />');
+			
+			/*要让创建的对象共享一个hello函数，根据对象的属性查找原则，
+			我们只要把hello函数移动到xiaoming、xiaohong这些对象共同的
+			原型上就可以了，也就是Student.prototype：*/
+			function St(name){
+				this.name = name;
+			}
+			St.prototype.hello = function(){
+				document.write('你好  '+this.name+'!'+"<br />");
+			}
+			var xiaoli = new St('小李');
+			var xiaozhang = new St('小张');
+			
+			//!!!true
+			var flag6 = xiaoli.hello === xiaozhang.hello;//!!!true
+			document.write(flag6+"<br />");
+			var flag7 = xiaoli.hello() === xiaozhang.hello();//true
+			document.write(flag7+"<br />");
+		document.write('-----------------------------'+'<br />');
+		</script>
+	</body>
+</html>

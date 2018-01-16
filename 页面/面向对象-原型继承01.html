@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>
+			在传统的基于Class的语言如Java、C++中，继承的本质
+			是扩展一个已有的Class，并生成新的Subclass。<br />
+		</p>
+		<p>
+			由于这类语言严格区分类和实例，继承实际上是类型的扩展。
+			但是，JavaScript由于采用原型继承，我们无法直接扩展
+			一个Class，因为根本不存在Class这种类型。
+		</p>
+		
+		<script type="text/javascript">
+			function Student(props){
+				this.name = props.name || 'Unammed';
+			}
+			
+			Student.prototype.hello = function(){
+				document.write('Hello, ' + this.name + '!'+'<br />');
+			}
+			
+			
+			/*原型链：new PrimaryStudent() ----> PrimaryStudent.prototype ---->
+			Object.prototype ----> null*/
+			//现在，我们要基于Student扩展出PrimaryStudent，
+			//可以先定义出PrimaryStudent：
+			function PrimaryStudent(props){
+				//调用Student构造函数，绑定this变量
+				Student.call(this,props);
+				this.grade = props.grade || 66;
+			}
+			
+			//空函数F()
+			function F(){}
+			
+			// 把F的原型指向Student.prototype:
+			F.prototype = Student.prototype;
+			
+			//把PrimaryStudent的原型指向一个新的F对象，F对象
+			//原型真好指向Student.prototype
+			PrimaryStudent.prototype = new F();
+	
+			//把PrimaryStudent原型的构造函数修复为PrimaryStudent
+			PrimaryStudent.prototype.constructor = PrimaryStudent;
+			
+			//继续在PrimaryStudent原型（就是new F()对象）上定义方法
+			PrimaryStudent.prototype.getGrade = function(){
+				return this.grade;
+			};
+			// 创建xiaoming:
+			var xiaoming = new PrimaryStudent({
+			    name: '小明',
+			    grade: 2
+			});
+			document.write(xiaoming.name+"<br />");//小明
+			document.write(xiaoming.grade+"<br />");//2
+			var a = xiaoming.__proto__;
+			document.write(a+"<br />");
+			var b = xiaoming.prototype;
+			document.write(b+"<br />");	
+			
+			
+			function init() {
+			    var name = "Mozilla"; 
+			    // name 是一个被init创建的局部变量
+			    function displayName() { 
+			    // displayName() 是一个内部函数,
+			        console.log('name ='+name); 
+			        //  一个闭包使用在父函数中声明的变量
+			    } 
+			    displayName();
+			}
+			init();
+			
+		</script>
+	</body>
+</html>

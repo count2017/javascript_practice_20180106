@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>
+			slice
+			slice()就是对应String的substring()版本，
+			它截取Array的部分元素，然后返回一个新的Array：
+		</p>
+		
+		
+		<script type="text/javascript">
+			var arr = [1,2,3,5,,5,"hehe"];
+			
+			var copy = arr.slice();//如果不给slice()函数传任何参数，它就会从头到尾截取所有元素。利用这一点，我们可以很容易地复制一个Array：
+			for(var i=0;i<copy.length;i++){
+				document.write(copy[i]+"<br />");
+			}
+			document.write("-------------"+"<br />");
+				
+				document.write(copy === arr);// false
+				document.write("<br />");
+			document.write("-------------"+"<br />");
+			var s = arr.slice(4,7);
+			document.write(s.length+"<br />");
+			document.write("-------------"+"<br />");
+			for(var i=0;i<s.length;i++){
+				document.write(s[i]+"<br />");
+			}
+			document.write("-------------"+"<br />");
+			
+			
+			
+		</script>
+	</body>
+</html>

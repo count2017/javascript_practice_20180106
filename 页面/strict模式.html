@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>
+			JavaScript在设计之初，为了方便初学者学习，
+			并不强制要求用var申明变量。这个设计错误带
+			来了严重的后果：如果一个变量没有通过var申明就被使用
+			，那么该变量就自动被申明为全局变量：
+		</p>
+		
+		
+		<script type="text/javascript">
+			'use strict'//启用strict模式
+			i = 10;//i现在是全局变量
+					//在同一个页面的不同的JavaScript文件中，如果都不用var申明，恰好都使用了变量i，
+					//将造成变量i互相影响，产生难以调试的错误结果。
+			alert(i);
+			
+		</script>
+	</body>
+</html>

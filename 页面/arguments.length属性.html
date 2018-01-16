@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p> arguments返回的参数个数为：</p>
+		<p id="demo"></p>
+		<script>
+			var x = ff(4,56,45,"dfs");
+			function ff(){
+				return arguments.length;
+			}
+			document.getElementById("demo").innerHTML=x;
+		</script>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>
+			【apply】<br />
+			虽然在一个独立的函数调用中，根据是否是strict模式，<br />
+			this指向undefined或window，不过，我们还是可以控制this的指向的！<br />
+			要指定函数的this指向哪个对象，可以用函数本身的apply方法，<br />
+			它接收两个参数，第一个参数就是需要绑定的this变量，第二个<br />
+			参数是Array，表示函数本身的参数。<br />
+			用apply修复getAge()调用：<br />
+		</p>
+		
+		<script type="text/javascript">
+			'use strict';
+			document.write('----------------------------'+"<br />");
+			function getAge(){
+				var y = new Date().getFullYear();
+				return y - this.birth;
+			}
+			var xiaoming = {
+				name:'小明',
+				birth:1990,
+				age:getAge
+			};
+			var a = getAge.apply(xiaoming,[]);// this指向xiaoming, 参数为空
+			document.write(a);
+			document.write('----------------------------'+"<br />");
+			
+			
+			
+			document.write('----------------------------'+"<br />");
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>
+			【忘记写new怎么办】<br />
+		</p>
+		<p>
+			在strict模式下，this.name = name将报错，因为this绑定为
+			undefined，在非strict模式下，this.name = name不报错，
+			因为this绑定为window，于是无意间创建了全局变量name，
+			并且返回undefined，这个结果更糟糕。
+		</p>
+		<p>
+			<strong>所以，调用构造函数千万不要忘记写new。</strong>
+			为了区分普通函数和构造函数，
+			<strong>按照约定，构造函数首字母应当大写，而普通函数首字母应当小写，
+				</strong>
+			这样，一些语法检查工具如jslint将可以帮你检测到漏写的new。
+		</p>
+		<p>
+			最后，我们还可以编写一个createStudent()函数，
+			在内部封装所有的new操作。一个常用的编程模式像这样：
+		</p>
+		
+		<script type="text/javascript">
+			
+			function Student(props){
+				this.name = props.name || '匿名';//默认值为'匿名'
+				this.grade = props.grade || 66;//默认值为66
+			}
+			
+			Student.prototype.hello = function(){
+				document.write('Hello '+this.name+"!");
+			}
+			
+			//!!!
+			function createStudent(props){
+				return new Student(props || {});
+			}
+			
+		document.write('-----------------------------'+'<br />');
+			//测试
+			var xiaoming = createStudent({
+				name:'小明'
+			});
+			document.write(xiaoming.name+"<br />");
+			document.write(xiaoming.grade+"<br />");
+		document.write('-----------------------------'+'<br />');
+		
+			var xiaohong = createStudent();
+			document.write(xiaohong.name+"<br />");
+			document.write(xiaohong.grade+"<br />");
+		document.write('-----------------------------'+'<br />');
+		
+			var xiaozhang = createStudent({});
+			document.write(xiaozhang.name+"<br />");
+			document.write(xiaozhang.grade+"<br />");
+		document.write('-----------------------------'+'<br />');
+		
+			var xiaoli = createStudent({
+				name:'小李',
+				grade:123
+			});
+			document.write(xiaoli.name+"<br />");
+			document.write(xiaoli.grade+"<br />");
+		</script>
+	</body>
+</html>

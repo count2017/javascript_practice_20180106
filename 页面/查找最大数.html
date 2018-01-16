@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	
+	<body>
+		<p id="demo"> </p>
+		<script type="text/javascript">
+		var x = h(21,54,4,2,65);
+		function h(){
+			var max = arguments[0];
+			
+				if(arguments.length < 2){
+					return max;
+				}else{
+					for(var i=1;i<arguments.length;i++){
+						if(arguments[i] > max){
+							max = arguments[i];
+						}
+					}
+					return max;
+				}
+				
+			
+		}
+		document.getElementById("demo").innerHTML=h(56,89)+"<br />";
+		document.write(x);
+	</script>
+	
+	</body>
+</html>

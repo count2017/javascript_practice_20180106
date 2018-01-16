@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>
+			screen对象表示屏幕的信息，常用信息有：<br />
+			screen.width:屏幕宽度，以像素为单位；<br />
+			screen.height:屏幕高度，以像素为单位；<br />
+			screen.colorDepth:返回颜色位数，如：8/16/24 <br />
+		</p>
+		
+		<p>
+			location<br />
+			location对象表示当前页面的URL信息<br />
+			location.href:获取完整的url;<br />
+		</p>
+		
+		<p>
+			要加载一个新页面，可以调用location.assign().<br />
+			如果想要重新加载当前页面，调用location.reload()方法非常方便。
+		</p>
+		
+		<p>
+			document对象表示当前页面。由于HTML在浏览器中以DOM形式表示为树形结构，<br />
+			document对象就是整个DOM数的根节点，<br />
+			document的title属性是从HTML文档中的<title>xxx</title>读取的，<br />
+			但是可以动态改变
+		</p>
+		
+		<p>
+			document对象还有一个cookie属性，可以获取当前页面的Cookie,<br />
+			Cookie是由服务器发送的key-value标识符。
+		</p>
+		<p>
+			JavaScript可以通过document.cookie读取到当前页面的Cookie：
+		</p>
+		
+		<p>
+			history对象保存了浏览器的历史记录，JavaScript可以调用history对象<br />
+			的back()或forward(),相当于
+		</p>
+		<script type="text/javascript">
+			'use strict';
+			document.write(screen.width+" "+screen.height+"<br />");
+			document.write(screen.colorDepth+"<br />");
+			document.write('-------------------'+"<br />");
+			document.write(location.href+"<br />");
+			document.write(location.protocol+"<br />");
+			document.write(location.host+"<br />");
+			document.write(location.port+"<br />");
+			document.write(location.pathname+"<br />");
+			document.write(location.search+"<br />");
+			document.write(location.hash+"<br />");
+			document.write('-------------------'+"<br />");
+			var co = document.cookie;
+		</script>
+	</body>
+</html>

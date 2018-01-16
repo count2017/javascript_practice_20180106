@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p> javascript对象是一组由键-值组成的无序集合</p>
+		
+		<p>
+			JavaScript用一个{...}表示一个对象，键值对以xxx: xxx形式申明，
+			用,隔开。注意，最后一个键值对不需要在末尾加,，如果加了，
+			有的浏览器（如低版本的IE）将报错。
+		</p>
+		
+		<p>
+			也可以用xiaohong['name']来访问xiaohong的name属性，
+			不过xiaohong.name的写法更简洁。我们在编写JavaScript代码的时候，
+			属性名尽量使用标准的变量名，这样就可以直接通过object.prop的形式访问一个属性了。
+		</p>
+		<script type="text/javascript">
+			document.write("---------------------"+"<br />");
+			var obj = {
+				name : 'Bob',
+				age : 18,
+				tag : ["学生","年轻","勇敢"],
+				hasCar : true,
+				zipcode : null
+			}
+			document.write(obj.name+"<br/>");
+			document.write(obj.hasCar+"<br/>");
+			document.write(obj.zipcode+"<br/>");
+			document.write("---------------------"+"<br />");
+			
+			var xiaohong = {
+				name:'小红',
+				'middle-school': 'No.1 Middle School'
+			};
+			//xiaohong的属性名middle-school不是一个有效的变量，
+			//就需要用''括起来。访问这个属性也无法使用.操作符，必须用['xxx']来访问：
+			var ms = xiaohong['middle-school'];
+			document.write("middle-school："+ms+"<br />");
+			document.write("---------------------"+"<br />");
+			
+			//也可以用xiaohong['name']来访问xiaohong的name属性，
+			var name = xiaohong['name'];
+			document.write("name："+name+"<br />");
+			document.write("---------------------"+"<br />");
+			
+			//我们在编写JavaScript代码的时候，
+			//属性名尽量使用标准的变量名，这样就可以直接通过object.prop
+			//的形式访问一个属性了。
+			var name_ = xiaohong.name;
+			document.write("name_："+name_+"<br />");
+			document.write("---------------------"+"<br />");
+		</script>
+	</body>
+</html>

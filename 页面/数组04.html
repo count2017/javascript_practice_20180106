@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>
+			push和pop
+			push()向Array的末尾添加若干元素，pop()则把Array的最后一个元素删除掉：
+		</p>
+		
+		<script type="text/javascript">
+			var arr = [1,2];
+			var len = arr.push('A',"B");//push()向Array的末尾添加若干元素,并返回添加元素后的数组长度
+			document.write(len+"<br />");
+			document.write("-------------"+"<br />");
+			for(var i=0;i<arr.length;i++){
+				document.write(arr[i]+"<br />");
+			}
+			document.write("-------------"+"<br />");
+			var last = arr.pop();//pop()则把Array的最后一个元素删除掉,并返回干掉的那个元素
+			document.write(last+"<br />");
+			document.write("-------------"+"<br />");
+			arr.pop();arr.pop();arr.pop();arr.pop();
+			var kk = arr.pop();
+			document.write(kk+"<br />");//空数组pop()后返回undefined
+			document.write("-------------"+"<br />");
+				
+			
+			document.write("-------------"+"<br />");
+			
+			document.write("-------------"+"<br />");
+		</script>
+	</body>
+</html>

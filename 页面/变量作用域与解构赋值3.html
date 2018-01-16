@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>
+			【变量提升】
+			JavaScript的函数定义有个特点，它会先扫描整个函数体的语句，
+			把所有申明的变量“提升”到函数顶部：
+		</p>
+		<p>
+			【全局作用域】
+			不在任何函数内定义的变量就具有全局作用域。实际上，<strong>JavaScript
+			默认有一个全局对象window，</strong>全局作用域的变量实际上被绑定到window
+			的一个属性：<br  />
+			<strong>这说明JavaScript实际上只有一个全局作用域。任何变量（函数也视为变量），
+			如果没有在当前函数作用域中找到，就会继续往上查找，最后如果在全局作用
+			域中也没有找到，则报ReferenceError错误。</strong>
+		</p>
+		
+		<p>
+			由于函数定义有两种方式，以变量方式var foo = function () {}
+			定义的函数实际上也是一个全局变量，因此，顶层函数的定义也被视
+			为一个全局变量，并绑定到window对象：
+		</p>
+		
+		<script type="text/javascript">
+			'use strict';
+			function foo(){
+				var x = 'Hello  ' + y;
+				document.write(x+'<br />');
+				var y = 'world';
+			}
+//			foo();
+			window.foo();//顶层函数的定义也被视为一个全局变量，并绑定到window对象：
+			foo();
+			document.write('----------------------------'+"<br />");
+			var a = 'ccc';
+			document.write(a+'<br />');//ccc
+			document.write(window.a + "<br />");//ccc
+			
+			document.write('----------------------------'+"<br />");
+			var old = window.alert;
+			 window.alert('调用window.alert()');
+			window.alert = function(){}
+			window.alert();
+			window.alert = old;
+			alert('又可以调用alert()了');
+			document.write('----------------------------'+"<br />");
+			var o = window.document.write;
+			document.write('++++++++++'+"<br />");
+			window.document.write = function(){}
+			document.write('sssssssss'+"<br />");
+			window.document.write = o;
+			document.write('kkkkkkkkkkkkkk'+"<br />");
+			document.write('----------------------------'+"<br />");
+			
+			
+		</script>
+	</body>
+</html>

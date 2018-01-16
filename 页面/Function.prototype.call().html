@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>
+			<strong>语法：fun.call(thisArg, arg1, arg2, ...)</strong>
+		</p>
+		
+		<p>
+			<strong>thisArg</strong><br />
+			在fun函数运行时指定的this值。需要注意的是，指定的this值
+			并不一定是该函数执行时真正的this值，<strong>如果这个函数处于
+			非严格模式下，</strong>则指定为null和undefined的this值会自动
+			指向全局对象(浏览器中就是window对象)，同时值为原始值
+			(数字，字符串，布尔值)的this会指向该原始值的自动包装对象。
+		</p>
+		
+		<p>
+			<strong>arg1, arg2, ...</strong><br />
+			指定的参数列表。
+		</p>
+		<p>
+			在一个子构造函数中，你可以通过调用父构造函数的 call 方法
+			来实现继承，类似于Java中的写法。
+		</p>
+		
+		<script type="text/javascript">
+			'use strict';
+			function Product(name,price){
+				this.name = name;
+				this.price = price;
+				if(price < 0){
+					throw RangeError('Cannot create product ' +
+                      this.name + ' with a negative price');
+				}
+			}
+			
+			function Food(name,price){
+				Product.call(this,name,price);
+				this.category = 'food';
+			}
+			
+			var fo1 = new Food('汉堡',16);
+			var fo2 = new Product('炸鸡',44);
+			document.write(fo1.category+"<br />");//food
+			document.write(fo2.category+"<br />");//undefined
+			document.write(fo1.name+"  "+fo1.price+"<br />");//汉堡 16
+			document.write(fo2.name+"  "+fo2.price+"<br />");//炸鸡 44
+		document.write('-----------------------------'+'<br />');
+			
+			//玩具
+			function Toy(na,pri){
+				Product.call(this,na,pri);
+				this.category = '玩具';
+			}
+			
+			var t = new Toy('变形金刚',488);
+			document.write(t.name+"  "+t.price+"<br />");
+		document.write('-----------------------------'+'<br />');
+			
+			var animals = [
+				{species:'Lion',name:'King'},
+				{species:'Whale',name:'Fail'}
+			];
+			//使用call方法调用匿名函数
+			for(var i=0; i < animals.length;i++){
+				(function(i){
+					this.print = function(){
+						document.write('#' + i  + ' ' + this.species+ ': ' + this.name+"<br />");
+					}
+					this.print();
+				}).call(animals[i],i);//'回调'
+			}
+		document.write('-----------------------------'+'<br />');
+			
+			//使用call方法调用函数并且指定上下文的'this'
+			function greet(){
+				var reply = [this.person, 'Is An Awesome', this.role].join();
+				document.write(reply+'<br />');
+			}
+			
+			var i = {
+				person: 'Douglas Crockford', role: 'Javascript Developer'
+			};
+			
+			//结果：Douglas Crockford,Is An Awesome,Javascript Developer
+			greet.call(i);//指定了'this',无后续参数
+			
+		document.write('-----------------------------'+'<br />');
+			
+		</script>
+	</body>
+</html>

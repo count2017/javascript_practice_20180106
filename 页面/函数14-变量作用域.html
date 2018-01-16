@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>
+			变量的作用域无非就是两种：全局变量和局部变量
+		</p>
+		
+		<p>
+			这里有一个地方需要注意，函数内部声明变量的时候，一定要使用var命令。
+			如果不用的话，你实际上声明了一个全局变量！
+		</p>
+		
+		<p>
+			上一节代码中的<strong>f3函数，就是闭包。</strong>
+			各种专业文献上的"闭包"（closure）定义非常抽象，很难看懂。
+			我的理解是，闭包就是能够读取其他函数内部变量的函数。
+		</p>
+		
+		<p>
+			Javascript语言特有的"链式作用域"结构（chain scope），子对象会
+			一级一级地向上寻找所有父对象的变量。所以，父对象的所有变量，
+			对子对象都是可见的，反之则不成立。
+		</p>
+		
+		<p>
+			由于在Javascript语言中，只有函数内部的子函数才能读取局部变量，
+			因此可以把闭包简单理解成"定义在一个函数内部的函数"
+		</p>
+		
+		<p>
+			<strong>
+				闭包可以用在许多地方。它的最大用处有两个，一个是前面提到的
+				可以读取函数内部的变量，另一个就是让这些变量的值始终
+				保持在内存中。
+			</strong>
+		</p>
+		
+		<script type="text/javascript">
+		
+			document.write('----------------------------'+"<br />");
+			function f1(){
+				n = 999;
+			}
+			f1();
+			document.write(n+'<br />');//999,在非严格模式下，且f1();调用不可缺少
+			document.write('----------------------------'+"<br />");
+			
+			/*既然f3可以读取f2中的局部变量，那么只要把f3作为返回值，我们
+			不就可以在f2外部读取它的内部变量了吗！*/
+			function f2(){
+				var x = 888;
+				function f3(){
+					var y = x;
+					return y;
+				}
+				return f3;
+			}
+			var r = f2();
+			var r_ = r();
+			document.write(r_+'<br />');
+			document.write('----------------------------'+"<br />");
+			
+			var name = "The Window";
+
+		　　var object = {
+		　　　　name : "My Object",
+		
+		　　　　getNameFunc : function(){
+		　　　　　　return function(){
+		　　　　　　　　return this.name;
+		　　　　　　};
+		
+		　　　　}
+		
+		　　};
+		
+		　　alert(object.getNameFunc()());
+			document.write('----------------------------'+"<br />");
+			
+			
+			var rf = (function(x){
+				return x*x;
+			})(2);
+			document.write(rf+'<br />');
+			document.write('----------------------------'+"<br />");
+			
+			
+		</script>
+	</body>
+</html>

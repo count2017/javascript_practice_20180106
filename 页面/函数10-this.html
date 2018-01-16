@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>
+			如果以对象的方法形式调用，比如xiaoming.age()，该函数的this指向被调用的对象，也就是xiaoming，这是符合我们预期的。
+
+			<strong>如果单独调用函数，</strong>比如getAge()，此时，该函数的this指向全局对象，也就是window。
+			
+			坑爹啊！
+			
+		</p>
+		
+		
+		<script type="text/javascript">
+			function getAge() {
+			    var y = new Date().getFullYear();
+			    return y - this.birth;
+			}
+						
+			var xiaoming = {
+			    name: '小明',
+			    birth: 1990,
+			    age: getAge  //非getAge(),谨防出错
+			};
+			document.write(xiaoming.age()+'<br />');// 28, 正常结果
+			document.write(getAge()+'<br />'); // NaN
+			document.write('----------------------------'+"<br />");
+			
+			//也是不行的！要保证this指向正确，必须用obj.xxx()的形式调用！
+			var fn = xiaoming.age;
+			document.write(fn()+'<br />'); // NaN
+			document.write('----------------------------'+"<br />");
+			
+			document.write('----------------------------'+"<br />");
+			
+		</script>
+	</body>
+</html>

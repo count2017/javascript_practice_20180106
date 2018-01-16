@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>
+			join()方法是一个非常实用的方法，
+			它把当前Array的每个元素都用指定
+			的字符串连接起来，然后返回连接后
+			的字符串：
+		</p>
+		<script type="text/javascript">
+			document.write("---------------------"+"<br />");
+			var arr = ['A', 'B', 'C', 1, 2, 3];
+			var cg = arr.join('-');//如果Array的元素不是字符串，将自动转换为字符串后再连接
+			document.write("cg的值："+cg + "<br />");
+			document.write("---------------------"+"<br />");
+			document.write("arr的值："+arr+"<br />")
+			document.write("---------------------"+"<br />");
+			var a_ = arr.join('j');
+			document.write("a_的值："+a_ + "<br />");
+			document.write("---------------------"+"<br />");
+		</script>
+	</body>
+</html>

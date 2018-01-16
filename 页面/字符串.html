@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>JavaScript的字符串就是用''或""括起来的字符表示</p>
+		
+		<script type="text/javascript">
+			//	如果字符串内部既包含'又包含"怎么办？可以用转义字符\来标识，
+			//'本身也是一个字符
+			//还可以用\u####表示一个Unicode字符：
+			var t = ["I'm bob.",'he"s nice','\"hello\"','\'lala\'',"\"名",'\u4e2d\u6587'];
+			for(var i=0;i<t.length;i++){
+				document.write(t[i]+"<br/>")
+			}
+		</script>
+	</body>
+</html>

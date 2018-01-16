@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>
+			for循环的3个条件都是可以省略的，
+			如果没有退出循环的判断条件，就必须使用break语句退出循环，
+			否则就是死循环：
+		</p>
+		<p>
+			【for ... in】
+			for循环的一个变体是for ... in循环，它可以把一个对象的所有属性依次循环出来：
+		</p>
+		<script type="text/javascript">
+			'use strict';
+			document.write("---------------------"+"<br />");
+			var x = 0;
+			for(;;){
+				if(x < 10){
+					document.write(x + "<br />");
+					x++;
+				}else{
+					break;
+				}
+			}
+			document.write("---------------------"+"<br />");
+			
+			var o = {
+				name:'Jack',
+				age:45,
+				position:'sz'
+			};
+			for(var key in o){
+				document.write(key + "<br />");
+			}
+			document.write("---------------------"+"<br />");
+		</script>
+	</body>
+</html>

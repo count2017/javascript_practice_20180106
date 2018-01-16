@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>
+			由于JavaScript的对象是动态类型，你可以自由地给一个对象添加或删除属性：			
+		</p>
+		
+		<p>
+			如果我们要检测xiaoming是否拥有某一属性，可以用in操作符：
+		</p>
+		<script type="text/javascript">
+			document.write("---------------------"+"<br />");
+				var xiaoming = {
+					name:'小明'
+				};
+				document.write("name:"+xiaoming.name+"<br />");
+			document.write("---------------------"+"<br />");
+			
+				xiaoming.age;
+				document.write("age:"+xiaoming.age+"<br />");// undefined
+				xiaoming.age = 18;//18
+				document.write("age:"+xiaoming.age+"<br />");
+			document.write("---------------------"+"<br />");
+			
+				delete xiaoming.age;//删除age属性
+				document.write("age:"+xiaoming.age+"<br />");// undefined
+			document.write("---------------------"+"<br />");
+			
+				delete xiaoming['name'];//删除name 属性
+				document.write("name:"+xiaoming.name+"<br />");// undefined
+				xiaoming.name = '古龙';
+				document.write("name:"+xiaoming.name+"<br />");
+				delete xiaoming.name;
+				document.write("name:"+xiaoming.name+"<br />");// undefined
+			document.write("---------------------"+"<br />");
+				
+				var xm = {
+				    name: '小明',
+				    birth: 1990,
+				    school: 'No.1 Middle School',
+				    height: 1.70,
+				    weight: 65,
+				    score: null
+				};
+				//如果我们要检测xiaoming是否拥有某一属性，可以用in操作符：
+				var f1 = 'name' in xm;
+				document.write("name in xm: "+f1+"<br />");
+				var f2 = 'school' in xm;
+				document.write("school in xm: "+f2+"<br />");
+				
+				/*过要小心，如果in判断一个属性存在，这个属性不一定是xiaoming的，
+				它可能是xiaoming继承得到的：*/
+				var f3 = 'toString' in xm;//toString定义在object对象中，
+										//而所有对象最终都会在原型链上指向object，
+										//所以xiaoming也拥有toString属性。
+				document.write("toString in xm: "+f3+"<br />");
+			document.write("---------------------"+"<br />");
+			
+				/*要判断一个属性是否是xiaoming自身拥有的，而不是继承得到的，
+				可以用hasOwnProperty()方法：*/
+				var f4 = xm.hasOwnProperty('name');//true
+				document.write("xm.hasOwnProperty('name'): "+f4+"<br />");
+				var f5 = xm.hasOwnProperty('toString');
+				document.write("xm.hasOwnProperty('toString'): "+f5+"<br />");//false
+			document.write("---------------------"+"<br />");
+		</script>
+	</body>
+</html>

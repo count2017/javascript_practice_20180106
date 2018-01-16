@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>
+			在JavaScript中，用var申明的变量实际上是有作用域的。
+		</p>
+		<p>
+			如果一个变量在函数体内部申明，则该变量的作用域
+			为整个函数体，在函数体外不可引用该变量：
+		</p>
+		<p>
+			如果两个不同的函数各自申明了同一个变量，那么该变量只在各自的函数体内起作用。
+			换句话说，不同函数内部的同名变量互相独立，互不影响：
+		</p>
+		<p>
+			由于JavaScript的函数可以嵌套，此时，内部函数可以访问
+			外部函数定义的变量，反过来则不行：
+		</p>
+		
+		<script type="text/javascript">
+			//，内部函数可以访问外部函数定义的变量，反过来则不行：
+			'use strict';
+			function foo(){
+				var x = 1;
+			}
+//			x = x + 2;// ReferenceError! 无法在函数体外引用变量x
+			document.write('----------------------------'+"<br />");
+			function bar(){
+				var x = 10;
+			    x += 1;
+			}
+			
+			document.write('----------------------------'+"<br />");
+			var inner;
+			function line(){
+				var a = 1;
+				function point(){
+					var b = a + 10;
+					return b;
+				}
+				inner = point();
+//				var c = b;// ReferenceError! line不可以访问point的变量b!
+			}
+			var l_ = line();
+			document.write(l_+"<br />");
+			document.write('----------------------------'+"<br />");
+			var po_ = inner;//先声明全局变量inner,再在函数line()内将内部函数
+							//point()赋值给inner，再在外部调用
+			document.write(po_+"<br />");
+			document.write('----------------------------'+"<br />");
+		</script>
+	</body>
+</html>
